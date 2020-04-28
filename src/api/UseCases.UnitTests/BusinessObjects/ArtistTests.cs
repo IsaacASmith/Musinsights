@@ -34,7 +34,7 @@ namespace UseCases.UnitTests.BusinessObjects
             var correlation = artist1.GetCorrelationToArtist(artist2);
 
             //Assert
-            Assert.AreEqual(2, correlation);
+            Assert.AreEqual(1, correlation);
         }
 
         [TestMethod]
