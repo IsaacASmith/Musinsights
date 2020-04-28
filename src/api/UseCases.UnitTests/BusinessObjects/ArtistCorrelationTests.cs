@@ -35,7 +35,7 @@ namespace UseCases.UnitTests.BusinessObjects
             var correlationScore = correlations.TotalCorrelations;
 
             //Assert
-            Assert.AreEqual(8, correlationScore);
+            Assert.AreEqual(2, correlationScore);
         }
 
         [TestMethod]
@@ -50,7 +50,7 @@ namespace UseCases.UnitTests.BusinessObjects
             var correlationScore = correlations.TotalCorrelations;
 
             //Assert
-            Assert.AreEqual(18, correlationScore);
+            Assert.AreEqual(6, correlationScore);
         }
 
         [TestMethod]
@@ -80,7 +80,7 @@ namespace UseCases.UnitTests.BusinessObjects
             var correlationScore = correlations.TotalCorrelationScore;
 
             //Assert
-            Assert.AreEqual(44, correlationScore);
+            Assert.AreEqual(33, correlationScore);
         }
 
         [TestMethod]
@@ -144,7 +144,6 @@ namespace UseCases.UnitTests.BusinessObjects
                 RelatedGenres =
                 {
                     { "Country", "Country" },
-                    { "R&B", "R&B" }
                 }
             };
 

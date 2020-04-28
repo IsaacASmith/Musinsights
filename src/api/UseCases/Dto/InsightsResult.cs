@@ -15,6 +15,7 @@ namespace UseCases.Dto
         public int DiversityScore { get; set; }
         public int ObscurityScore { get; set; }
 
+        public IEnumerable<string> TopGenres { get; set; }
         public IEnumerable<string> TopArtists { get; set; }
     }
 }

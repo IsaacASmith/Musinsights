@@ -35,12 +35,14 @@ namespace UseCases
 
                 var artistCorrelations = new ArtistCorrelations(topArtistsResult.Model);
                 var artistPopularities = new ArtistPopularities(topArtistsResult.Model);
+                var topGenres = new TopGenres(topArtistsResult.Model);
 
                 result.Insights.Add(new InsightForTimeRange
                 {
                     TimeRange = timeRange,
                     DiversityScore = 100 - artistCorrelations.TotalCorrelationScore,
                     ObscurityScore = 100 - artistPopularities.TotalPopularityScore,
+                    TopGenres = topGenres.GetTopGenres(),
                     TopArtists = topArtistsResult.Model.Take(5).Select(e => e.Name)
                 });
             }
