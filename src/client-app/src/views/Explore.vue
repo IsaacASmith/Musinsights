@@ -81,6 +81,5 @@ export default {
     align-items: center;
     flex-direction: column;
     text-align: center;
-    margin-top: -200px;
   }
 </style>
