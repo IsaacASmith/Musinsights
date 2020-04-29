@@ -6,6 +6,7 @@ namespace MusicProvider.Spotify.Config
     {
         string ApiUrl { get; }
         string PersonalizationRoute { get; }
+        string AudioFeaturesRoute { get; }
     }
 
     public class SpotifyMusicProviderConfig : ISpotifyMusicProviderConfig
@@ -23,6 +24,14 @@ namespace MusicProvider.Spotify.Config
             get
             {
                 return Environment.GetEnvironmentVariable("SpotifySettings:PersonalizationRoute");
+            }
+        }
+
+        public string AudioFeaturesRoute
+        {
+            get
+            {
+                return Environment.GetEnvironmentVariable("SpotifySettings:AudioFeaturesRoute");
             }
         }
     }

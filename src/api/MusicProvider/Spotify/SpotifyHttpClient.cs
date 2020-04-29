@@ -12,6 +12,7 @@ namespace MusicProvider.Spotify
     {
         Task<string> GetUserTopArtists(string accessToken, TimeRange timeRange = TimeRange.ShortTerm);
         Task<string> GetUserTopTracks(string accessToken, TimeRange timeRange = TimeRange.ShortTerm);
+        Task<string> GetTrackAudioFeatures(string accessToken, string trackIds);
     }
 
     public class SpotifyHttpClient : ISpotifyHttpClient
@@ -35,11 +36,26 @@ namespace MusicProvider.Spotify
             return await GetPersonalizationInfo(accessToken, timeRange, "tracks");
         }
 
+        public async Task<string> GetTrackAudioFeatures(string accessToken, string trackIds)
+        {
+            var reqUrl = $"{_config.ApiUrl}{_config.AudioFeaturesRoute}?ids={trackIds}";
+
+            var req = new HttpRequestMessage(HttpMethod.Get, reqUrl);
+
+            return await SendAuthenticatedRequest(req, accessToken);
+        }
+
         private async Task<string> GetPersonalizationInfo(string accessToken, TimeRange timeRange, string personalizationType)
         {
             var reqUrl = $"{_config.ApiUrl}{_config.PersonalizationRoute}{personalizationType}?limit=50&time_range={SpotifyTimeRangeHelper.GetTimeRangeString(timeRange)}";
 
             var req = new HttpRequestMessage(HttpMethod.Get, reqUrl);
+
+            return await SendAuthenticatedRequest(req, accessToken);
+        }
+
+        private async Task<string> SendAuthenticatedRequest(HttpRequestMessage req, string accessToken)
+        {
             req.Headers.Add("Authorization", $"Bearer {accessToken}");
 
             var response = await _httpClient.SendAsync(req);

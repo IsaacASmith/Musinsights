@@ -33,9 +33,9 @@ namespace MusicProvider.Spotify
         {
             try
             {
-                var apiResponse = await _spotifyHttpClient.GetUserTopTracks(_authManager.GetAccessToken(userId), timeRange);
+                var apiTrackResponse = await _spotifyHttpClient.GetUserTopTracks(_authManager.GetAccessToken(userId), timeRange);
 
-                if (apiResponse.Contains("\"status\": 401"))
+                if (apiTrackResponse.Contains("\"status\": 401"))
                 {
                     return new ProviderResult<IEnumerable<Track>>
                     {
@@ -44,15 +44,26 @@ namespace MusicProvider.Spotify
                     };
                 }
 
-                var tracksApiModel = JsonConvert.DeserializeObject<TrackListResponseModel>(apiResponse);
+                var tracksApiModel = JsonConvert.DeserializeObject<TrackListResponseModel>(apiTrackResponse);
+
+                var trackIds = string.Join(',', tracksApiModel.Items.Select(e => e.Id));
+
+                var apiTrackFeaturesResponse = await _spotifyHttpClient.GetTrackAudioFeatures(_authManager.GetAccessToken(userId), trackIds);
+
+                var trackFeaturesModel = JsonConvert.DeserializeObject<AudioFeaturesResponseModel>(apiTrackFeaturesResponse);
 
                 return new ProviderResult<IEnumerable<Track>>
                 {
                     Success = true,
-                    Model = tracksApiModel.Items.Select(e => e.ToTrack())
+                    Model = tracksApiModel.Items.Select(e =>
+                    {
+                        var track = e.ToTrack();
+                        track.AudioFeatures = trackFeaturesModel.Audio_Features.FirstOrDefault(f => f.Id == track.Id)?.ToBusinessObject();
+                        return track;
+                    })
                 };
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _logger.LogError(ex, "Error contacting the spotify API");
                 return new ProviderResult<IEnumerable<Track>>
