@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="insight-container">
       <h3 class="title">Music Insights</h3>
       <v-select
         v-model="selectedTimeRange"
@@ -58,6 +58,10 @@ export default {
 </script>
 
 <style scoped>
+  .insight-container {
+    width: 100%;
+  }
+
   .title {
     margin-bottom: 30px;
     text-align: left;

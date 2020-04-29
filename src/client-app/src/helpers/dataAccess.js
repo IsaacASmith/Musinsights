@@ -4,6 +4,10 @@ const insightsCacheKey = 'InsightsValue'
 const insightsCacheExpiration = 'InsightsExpiration'
 
 export default class dataAccess {
+  static async hasCachedValue () {
+    return localStorage[insightsCacheKey] === undefined || new Date(localStorage[insightsCacheExpiration]) <= new Date()
+  }
+
   static async getInsights (userId) {
     if (localStorage[insightsCacheKey] === undefined || new Date(localStorage[insightsCacheExpiration]) <= new Date()) {
       const expirationDate = new Date().setHours(new Date().getHours() + 48)

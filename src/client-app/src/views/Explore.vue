@@ -11,7 +11,7 @@
                 Your information is never shared outside of this site.
             </p>
         </div>
-        <div v-else>
+        <div v-else class="insight-container">
             <div class="loading-status" v-if="isLoading">
               <v-progress-circular indeterminate size="50"></v-progress-circular>
               <p>Analyzing your musical tastes...</p>
@@ -40,7 +40,7 @@ export default {
     }
   },
   mounted: async function () {
-    if (authHelper.hasAccessKey()) {
+    if (dataAccess.hasCachedValue() || authHelper.hasAccessKey()) {
       this.isAuthenticated = true
       await this.loadData()
     } else {
@@ -92,5 +92,9 @@ export default {
     flex-direction: column;
     text-align: center;
     margin: 30px 0;
+  }
+
+  .insight-container {
+    width: 100%;
   }
 </style>
