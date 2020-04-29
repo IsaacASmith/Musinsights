@@ -22,6 +22,9 @@ namespace Function.ViewModels
         public string TimeRange { get; set; }
         public int DiversityScore { get; set; }
         public int MainstreamScore { get; set; }
+        public int DanceabilityScore { get; set; }
+        public int EnergyScore { get; set; }
+        public int PositivityScore { get; set; }
         public int ExplicitScore { get; set; }
 
         public IEnumerable<string> TopTracks { get; set; }
@@ -33,6 +36,9 @@ namespace Function.ViewModels
             TimeRange = model?.TimeRange.ToString();
             DiversityScore = model?.DiversityScore ?? 0;
             MainstreamScore = model?.MainstreamScore ?? 0;
+            PositivityScore = model?.PositivityScore ?? 0;
+            DanceabilityScore = model?.DanceabilityScore ?? 0;
+            EnergyScore = model?.EnergyScore ?? 0;
             ExplicitScore = model?.ExplicitScore ?? 0;
             TopTracks = model?.TopTracks ?? new List<string>();
             TopGenres = model?.TopGenres ?? new List<string>();

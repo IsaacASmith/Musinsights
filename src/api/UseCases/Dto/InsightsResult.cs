@@ -14,6 +14,9 @@ namespace UseCases.Dto
         public TimeRange TimeRange { get; set; }
         public int DiversityScore { get; set; }
         public int MainstreamScore { get; set; }
+        public int DanceabilityScore { get; set; }
+        public int EnergyScore { get; set; }
+        public int PositivityScore { get; set; }
         public int ExplicitScore { get; internal set; }
 
         public IEnumerable<string> TopTracks { get; set; }

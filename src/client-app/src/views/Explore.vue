@@ -11,12 +11,12 @@
                 Your information is never shared outside of this site.
             </p>
         </div>
+        <div class="loading-status" v-if="isLoading">
+          <v-progress-circular indeterminate size="50"></v-progress-circular>
+          <p>Analyzing your musical tastes...</p>
+        </div>
         <div v-else class="insight-container">
-            <div class="loading-status" v-if="isLoading">
-              <v-progress-circular indeterminate size="50"></v-progress-circular>
-              <p>Analyzing your musical tastes...</p>
-            </div>
-            <InsightContainer :userInsights="userInsights" v-else/>
+            <InsightContainer :userInsights="userInsights"/>
         </div>
     </div>
   </div>
@@ -61,7 +61,11 @@ export default {
 
 <style scoped>
   .loading-status {
-    margin-top: 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
   }
 
   .explore{
@@ -96,5 +100,11 @@ export default {
 
   .insight-container {
     width: 100%;
+  }
+
+  @media screen and (min-width: 1100px) {
+    .content-container {
+      width: 1000px;
+    }
   }
 </style>

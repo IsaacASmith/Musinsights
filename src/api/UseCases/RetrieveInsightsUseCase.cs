@@ -43,7 +43,7 @@ namespace UseCases
 
                 var artistCorrelations = new ArtistCorrelations(topArtistsResult.Model);
                 var artistPopularities = new ArtistPopularities(topArtistsResult.Model);
-                var explicitScore = new ExplicitScore(topTracksResult.Model);
+                var trackScores = new TrackScores(topTracksResult.Model);
 
                 var topGenres = new TopGenres(topArtistsResult.Model);
 
@@ -52,7 +52,10 @@ namespace UseCases
                     TimeRange = timeRange,
                     DiversityScore = 100 - artistCorrelations.TotalCorrelationScore,
                     MainstreamScore = artistPopularities.TotalPopularityScore,
-                    ExplicitScore = explicitScore.ExplicitScoreValue,
+                    DanceabilityScore = trackScores.DanceabilityScore,
+                    PositivityScore = trackScores.PositivityScore,
+                    EnergyScore = trackScores.EnergyScore,
+                    ExplicitScore = trackScores.ExplicitScore,
                     TopTracks = topTracksResult.Model.Take(5).Select(e => e.Name),
                     TopArtists = topArtistsResult.Model.Take(5).Select(e => e.Name),
                     TopGenres = topGenres.GetTopGenres(),

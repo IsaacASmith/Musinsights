@@ -31,6 +31,10 @@ export default {
 </script>
 
 <style scoped>
+  .container {
+    width: 300px;
+  }
+  
   h3 {
     font-size: 16pt;
   }
