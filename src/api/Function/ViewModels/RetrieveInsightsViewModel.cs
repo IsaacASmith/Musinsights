@@ -21,15 +21,20 @@ namespace Function.ViewModels
     {
         public string TimeRange { get; set; }
         public int DiversityScore { get; set; }
-        public int ObscurityScore { get; set; }
-        public IEnumerable<string> TopGenres { get; set; }
+        public int MainstreamScore { get; set; }
+        public int ExplicitScore { get; set; }
+
+        public IEnumerable<string> TopTracks { get; set; }
         public IEnumerable<string> TopArtists { get; set; }
+        public IEnumerable<string> TopGenres { get; set; }
 
         public InsightsForRangeViewModel(InsightForTimeRange model)
         {
             TimeRange = model?.TimeRange.ToString();
             DiversityScore = model?.DiversityScore ?? 0;
-            ObscurityScore = model?.ObscurityScore ?? 0;
+            MainstreamScore = model?.MainstreamScore ?? 0;
+            ExplicitScore = model?.ExplicitScore ?? 0;
+            TopTracks = model?.TopTracks ?? new List<string>();
             TopGenres = model?.TopGenres ?? new List<string>();
             TopArtists = model?.TopArtists ?? new List<string>();
         }

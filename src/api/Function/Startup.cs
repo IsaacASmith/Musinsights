@@ -21,6 +21,7 @@ namespace Functions
             builder.Services.AddScoped<ISpotifyMusicProviderConfig, SpotifyMusicProviderConfig>();
             builder.Services.AddScoped<ISpotifyHttpClient, SpotifyHttpClient>();
             builder.Services.AddScoped<IArtistProvider, SpotifyArtistProvider>();
+            builder.Services.AddScoped<ITrackProvider, SpotifyTrackProvider>();
 
             builder.Services.AddScoped<IRetrieveInsightsUseCase, RetrieveInsightsUseCase>();
         }

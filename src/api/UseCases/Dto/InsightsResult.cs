@@ -13,8 +13,10 @@ namespace UseCases.Dto
     {
         public TimeRange TimeRange { get; set; }
         public int DiversityScore { get; set; }
-        public int ObscurityScore { get; set; }
+        public int MainstreamScore { get; set; }
+        public int ExplicitScore { get; internal set; }
 
+        public IEnumerable<string> TopTracks { get; set; }
         public IEnumerable<string> TopGenres { get; set; }
         public IEnumerable<string> TopArtists { get; set; }
     }
