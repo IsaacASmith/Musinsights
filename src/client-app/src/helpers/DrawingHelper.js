@@ -18,7 +18,7 @@ class DrawingHelper {
 
     var i = 0
     var timer = setInterval(function () {
-      ctx.strokeStyle = '#344a5f'
+      ctx.strokeStyle = '#416180'
       ctx.lineWidth = 50
       ctx.beginPath()
       ctx.arc(400, 400, 350, 0, 2 * Math.PI * percentToDraw * i / 100, false)

@@ -26,6 +26,11 @@ namespace UseCases.BusinessObjects
         {
             get
             {
+                if(_artists.Count() == 0)
+                {
+                    return 0;
+                }
+
                 double totalPopularity = _artists.Sum(e => e.Popularity);
 
                 return (int)Math.Round((totalPopularity / (double)PopularityPossible) * 100, 0);

@@ -10,11 +10,6 @@ namespace UseCases.BusinessObjects
 
         public ArtistCorrelations(IEnumerable<Artist> artists)
         {
-            if(artists.Count() < 2)
-            {
-                throw new ArgumentException("Include at least two artists to get correlations.");
-            }
-
             foreach (var artist in artists)
             {
                 _artistCorrelations.Add(artist, new Dictionary<Artist, int>());
@@ -56,6 +51,11 @@ namespace UseCases.BusinessObjects
         {
             get
             {
+                if(_artistCorrelations.Count < 2)
+                {
+                    return 0;
+                }
+
                 var correlationScore = (double)TotalCorrelations / (double) TotalPossibleCorrelations * 100;
 
                 return (int)Math.Round(correlationScore, 0);
