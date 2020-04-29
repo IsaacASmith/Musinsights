@@ -2,7 +2,7 @@ import authHelper from './authHelper.js'
 
 export default class apiHelper {
   static async getInsights (userId) {
-    const reqUrl = `${process.env.VUE_APP_INSIGHTS_ROUTE}?userId=${userId}`
+    const reqUrl = `${process.env.VUE_APP_INSIGHTS_ROUTE}&userId=${userId}`
     return await this.makeReq('POST', reqUrl)
   }
 

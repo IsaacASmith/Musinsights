@@ -32,13 +32,7 @@ export default {
 }
 
 .welcome-container {
-  background-image: linear-gradient(
-      to bottom,
-      rgba(20, 20, 20, 0.65) 0%,
-      rgba(20, 20, 20, 0.65) 100%
-    ),
-    url("../../public/img/home-bg.jpg");
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #1d2935;
   background-size: cover;
   width: 100%;
   display: flex;
@@ -51,6 +45,8 @@ export default {
   padding: 20px;
   margin: 175px 0;
   max-width: 500px;
+  box-shadow: 0px 0px 15px #131a21;
+  border-radius: 5px;
 }
 
 .home-action-container * {

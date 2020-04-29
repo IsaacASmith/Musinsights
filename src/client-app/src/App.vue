@@ -48,7 +48,7 @@ export default {
     text-decoration: none;
   }
  .content-wrapper{
-   background-color: #19191a;
+   background-color: #1d2935;
  }
  .nav-btn{
    margin-left: 30px;

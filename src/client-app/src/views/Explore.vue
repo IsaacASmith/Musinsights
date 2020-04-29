@@ -2,13 +2,13 @@
   <div class="explore">
     <div class="content-container">
         <div class="connect-container" v-if="!isAuthenticated">
-            <h2>Connect To Spotify</h2>
+            <h2>Connect To Your Music</h2>
             <p>
-                In order to learn about your music tastes, we need to communicate with Spotify.
+                In order to learn about your music tastes, we need to communicate with a music service.
             </p>
-            <v-btn color="#344a5f" @click="authUser">Connect >></v-btn>
+            <v-btn color="#2c3e50" @click="authUser">Connect Spotify >></v-btn>
             <p class="privacy-text">
-                Your spotify information is never shared outside of this site.
+                Your information is never shared outside of this site.
             </p>
         </div>
         <div v-else>
@@ -73,13 +73,14 @@ export default {
 
   .content-container{
     width: 500px;
-    background-color: #2c3e50;
-    box-shadow: 0px 0px 15px black;
+    background-color: #344a5f;
+    box-shadow: 0px 0px 15px #131a21;
     border-radius: 5px;
     padding: 30px;
     display: flex;
     align-items: center;
     flex-direction: column;
     text-align: center;
+    margin: 30px 0;
   }
 </style>
