@@ -44,8 +44,7 @@ export default {
   .high-level-stats {
       width: 100%;
       display: flex;
-      flex-direction: row;
-      flex-wrap:wrap;
+      flex-direction: column;
       justify-content: center;
       background-color: #1d2935;
       padding: 20px 8px;
@@ -76,6 +75,7 @@ export default {
       padding: 5px 25px;
       border-radius: 10px;
       box-shadow: 2px 2px 3px #131a21;
+      width: 100%;
   }
 
   .data-list h3 {

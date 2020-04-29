@@ -24,8 +24,10 @@ class DrawingHelper {
       ctx.arc(400, 400, 350, 0, 2 * Math.PI * percentToDraw * i / 100, false)
       ctx.stroke()
       i = i + 1
-      console.log('drawing at ', i)
       if (i >= 100) {
+        ctx.translate(400, 400)
+        ctx.rotate(90 * Math.PI / 180)
+        ctx.translate(-400, -400)
         clearInterval(timer)
       }
     }, 10)
