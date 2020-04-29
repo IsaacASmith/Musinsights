@@ -1,5 +1,5 @@
 module.exports = {
-  publicPath: '/musinsights.github.io',
+  publicPath: '/Musinsights',
   outputDir: 'docs',
   transpileDependencies: [
     'vuetify'
