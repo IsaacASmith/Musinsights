@@ -1,18 +1,9 @@
 <template>
     <div class="time-based-insight">
         <div class="high-level-stats">
-            <div class="high-level-stat">
-                <p>Genre Diversity Score:</p>
-                <p>{{insight.diversityScore}}</p>
-            </div>
-            <div class="high-level-stat">
-                <p>Artist Mainstream Score:</p>
-                <p>{{insight.mainstreamScore}}</p>
-            </div>
-            <div class="high-level-stat">
-                <p>Explicit Lyric Score:</p>
-                <p>{{insight.explicitScore}}</p>
-            </div>
+            <HighLevelStat :value="insight.diversityScore" maxValue="100" title="Genre Diversity Score" uniqueId="div-score"/>
+            <HighLevelStat :value="insight.mainstreamScore" maxValue="100" title="Mainstream Score" uniqueId="mainstream-score"/>
+            <HighLevelStat :value="insight.explicitScore" maxValue="100" title="Explicit Lyric Score" uniqueId="explicit-score"/>
         </div>
         <div class="data-list">
             <h3>Your Top Artists</h3>
@@ -30,9 +21,14 @@
 </template>
 
 <script>
+import HighLevelStat from '../components/HighLevelStat'
+
 export default {
   name: 'TimeBasedInsight',
-  props: ['insight']
+  props: ['insight'],
+  components: {
+    HighLevelStat
+  }
 }
 </script>
 
@@ -53,6 +49,7 @@ export default {
       justify-content: center;
       background-color: #1d2935;
       padding: 20px 8px;
+      padding-bottom: 5px;
       border-radius: 10px;
       box-shadow: 2px 2px 3px #131a21;
   }
