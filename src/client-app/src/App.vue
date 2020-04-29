@@ -17,7 +17,9 @@
       </router-link>
     </v-app-bar>
     <v-content class="content-wrapper">
-      <router-view></router-view>
+      <transition name="fade">
+        <router-view></router-view>
+      </transition>
     </v-content>
   </v-app>
 </template>
@@ -53,6 +55,19 @@ export default {
  .nav-btn{
    margin-left: 30px;
  }
+
+ .fade-enter-active {
+    transition-property: margin-top;
+    transition-duration: .25s;
+  }
+
+  .fade-enter-active {
+    transition-delay: 0s;
+  }
+
+  .fade-enter {
+    margin-top: 15px;
+  }
 </style>
 
 <style>

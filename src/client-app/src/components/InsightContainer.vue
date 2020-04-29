@@ -15,11 +15,13 @@
         class="time-range-select"
       ></v-select>
       <TimeBasedInsight v-if="userInsights.length > 2" :insight="selectedInsight"/>
+      <v-btn color="#2c3e50" class="connect-again-btn" @click="connectNewAccount">Connect A Different Account</v-btn>
     </div>
 </template>
 
 <script>
 import TimeBasedInsight from './TimeBasedInsight'
+import authHelper from '../helpers/authHelper.js'
 
 export default {
   name: 'InsightContainer',
@@ -42,12 +44,14 @@ export default {
       if (this.userInsights.length < 3) {
         return
       }
-      console.log(this.userInsights.filter(insight => {
-        return insight.timeRange === this.selectedTimeRange
-      }))
       return this.userInsights.filter(insight => {
         return insight.timeRange === this.selectedTimeRange
       })[0]
+    }
+  },
+  methods: {
+    connectNewAccount () {
+      authHelper.getAccessKey(true)
     }
   }
 }
@@ -61,5 +65,10 @@ export default {
 
   .time-range-select {
     margin-bottom: 20px;
+  }
+
+  .connect-again-btn {
+    margin-top: 25px;
+    color: white;
   }
 </style>

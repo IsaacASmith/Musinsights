@@ -12,7 +12,7 @@ export default class authHelper {
 
   static getAccessKey (shouldReprompt = false) {
     var accessKey = localStorage[spotifyAccessKey]
-    if (!accessKey || new Date(localStorage[accessKeyExpiration]) <= new Date()) {
+    if (!accessKey || new Date(localStorage[accessKeyExpiration]) <= new Date() || shouldReprompt) {
       const userId = this.getOrCreateUserId()
       window.location.href = `https://accounts.spotify.com/authorize?client_id=${process.env.VUE_APP_SPOTIFY_CLIENT_ID}&response_type=token&redirect_uri=${process.env.VUE_APP_SPOTIFY_REDIRECT_URL}&scope=${process.env.VUE_APP_SPOTIFY_SCOPES}&show_dialog=${shouldReprompt}&state=${userId}`
     }
@@ -26,7 +26,6 @@ export default class authHelper {
   static setAccessKey (authResponse) {
     const stateStartIndex = authResponse.indexOf('state') + 6
     const state = authResponse.substring(stateStartIndex, authResponse.length)
-    console.log(state, this.getOrCreateUserId())
     if (state !== this.getOrCreateUserId()) {
       return
     }

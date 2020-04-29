@@ -12,7 +12,11 @@
             </p>
         </div>
         <div v-else>
-            <InsightContainer :userInsights="userInsights"/>
+            <div class="loading-status" v-if="isLoading">
+              <v-progress-circular indeterminate size="50"></v-progress-circular>
+              <p>Analyzing your musical tastes...</p>
+            </div>
+            <InsightContainer :userInsights="userInsights" v-else/>
         </div>
     </div>
   </div>
@@ -31,6 +35,7 @@ export default {
   data () {
     return {
       isAuthenticated: false,
+      isLoading: true,
       userInsights: []
     }
   },
@@ -41,6 +46,7 @@ export default {
     } else {
       this.isAuthenticated = false
     }
+    this.isLoading = false
   },
   methods: {
     authUser: () => {
@@ -54,6 +60,10 @@ export default {
 </script>
 
 <style scoped>
+  .loading-status {
+    margin-top: 30px;
+  }
+
   .explore{
     display: flex;
     align-items: center;

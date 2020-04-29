@@ -10,7 +10,7 @@
                 <p>{{insight.mainstreamScore}}</p>
             </div>
             <div class="high-level-stat">
-                 <p>Explicit Lyric Score:</p>
+                <p>Explicit Lyric Score:</p>
                 <p>{{insight.explicitScore}}</p>
             </div>
         </div>
@@ -37,6 +37,10 @@ export default {
 </script>
 
 <style scoped>
+  .loading-status {
+    margin-bottom: 35px;
+  }
+
   .time-based-insight {
     width: 100%;
   }
