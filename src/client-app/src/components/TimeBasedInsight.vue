@@ -63,6 +63,9 @@ export default {
       background-color: #344a5f;
       margin-bottom: 10px;
       box-shadow: 2px 2px 3px #131a21;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
   }
 
   .data-list{
