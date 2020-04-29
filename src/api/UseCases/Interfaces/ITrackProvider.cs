@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using UseCases.BusinessObjects;
+using UseCases.Dto;
+using UseCases.Enums;
 
 namespace UseCases.Interfaces
 {
-    public class ITrackProvider
+    public interface ITrackProvider
     {
-
+        Task<ProviderResult<IEnumerable<Track>>> GetTopTracks(string userId, TimeRange timeRange);
     }
 }

@@ -13,7 +13,6 @@ namespace UseCases.BusinessObjects
         {
             var _genreScores = new Dictionary<string, double>();
 
-            int i = 0;
             foreach (var artist in artistsOrderedByTop)
             {
                 foreach(var genre in artist.RelatedGenres)
@@ -22,9 +21,8 @@ namespace UseCases.BusinessObjects
                     {
                         _genreScores.Add(genre.Key, 0);
                     }
-                    _genreScores[genre.Key] += 1 * (1 - .01 * i);
+                    _genreScores[genre.Key] += 1;
                 }
-                i += 1;
             }
 
             _orderedGenres = _genreScores.OrderByDescending(e => e.Value).Select(e => GetCapitalized(e.Key));
