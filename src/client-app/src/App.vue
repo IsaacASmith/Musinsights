@@ -9,13 +9,14 @@
     <div class="nav-links-container">
       <router-link class="nav-title" to="/">
         <h1>Musinsights</h1>
+        <span>ALPHA</span>
       </router-link>
       <div>
         <router-link to="/explore">
-          <v-btn class="nav-btn" color="#344a5f">Explore</v-btn>
+          <v-btn class="nav-btn" color="#1d2935">Explore</v-btn>
         </router-link>
         <router-link to="/about">
-          <v-btn class="nav-btn" color="#344a5f">About</v-btn>
+          <v-btn class="nav-btn" color="#1d2935" id="last-nav-btn">About</v-btn>
         </router-link>
       </div>
     </div>
@@ -57,12 +58,20 @@ export default {
   .nav-title{
     color: white;
     text-decoration: none;
+    display: flex;
   }
+
+  .nav-title span {
+    margin-left: 2px;
+    font-size: 8pt;
+  }
+
+  .nav-btn {
+    margin-left: 20px;
+  }
+
  .content-wrapper{
    background-color: #1d2935;
- }
- .nav-btn{
-   margin-left: 30px;
  }
 
  .fade-enter-active {
@@ -81,15 +90,22 @@ export default {
   @media screen and (max-width: 485px){
     .nav-links-container {
       flex-direction: column;
-      margin-left: -15px;
+      margin-left: -35px;
       margin-top: 40px;
     }
     header {
       height: 105px !important;
     }
-    .nav-btn{
-      margin-left: 15px;
+    .nav-title {
+      margin-left: 30px;
     }
+    .nav-btn {
+      margin-left: 12px;
+    }
+    #last-nav-btn {
+      margin-left: 10px;
+    }
+
     .content-wrapper {
       margin-top: 60px;
     }
