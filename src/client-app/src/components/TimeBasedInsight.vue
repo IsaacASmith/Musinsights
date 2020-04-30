@@ -11,28 +11,31 @@
         <div class="data-list-container">
           <div class="data-list">
               <h3>Your Top Artists</h3>
-              <p v-for="(artist, index) in insight.topArtists" :key="artist">{{index + 1}}. {{artist}}</p>
+              <p v-for="(artist, index) in insight.topArtists" :key="artist" class="data-list-value">{{index + 1}}. {{artist}}</p>
           </div>
           <div class="data-list">
               <h3>Your Top Songs</h3>
-              <p v-for="(song, index) in insight.topTracks" :key="song">{{index + 1}}. {{song}}</p>
+              <p v-for="(song, index) in insight.topTracks" :key="song" class="data-list-value">{{index + 1}}. {{song}}</p>
           </div>
           <div class="data-list">
               <h3>Your Top Genres</h3>
-              <p v-for="(genre, index) in insight.topGenres" :key="genre">{{index + 1}}. {{genre}}</p>
+              <p v-for="(genre, index) in insight.topGenres" :key="genre" class="data-list-value">{{index + 1}}. {{genre}}</p>
           </div>
         </div>
+        <TracksPerDecade :model="insight.trackCountPerDecade" class="tracks-decade-graph"/>
     </div>
 </template>
 
 <script>
 import HighLevelStat from '../components/HighLevelStat'
+import TracksPerDecade from '../components/TracksPerDecade'
 
 export default {
   name: 'TimeBasedInsight',
   props: ['insight'],
   components: {
-    HighLevelStat
+    HighLevelStat,
+    TracksPerDecade
   }
 }
 </script>
@@ -93,6 +96,18 @@ export default {
       margin-bottom: 20px;
   }
 
+  .data-list-value {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-basis: 100%;
+    max-width: 240px;
+  }
+
+  .tracks-decade-graph {
+    margin-top: 20px;
+  }
+
   @media screen and (min-width: 1100px) {
     .high-level-stats {
       flex-direction: row;
@@ -102,6 +117,7 @@ export default {
 
     .data-list-container {
       flex-direction: row;
+      flex-basis: 100%;
     }
 
     .data-list:last-child {

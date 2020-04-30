@@ -15,7 +15,7 @@
         class="time-range-select"
       ></v-select>
       <TimeBasedInsight v-if="userInsights.length > 2" :insight="selectedInsight"/>
-      <v-btn color="#2c3e50" class="connect-again-btn" @click="connectNewAccount">Connect A Different Account</v-btn>
+      <v-btn color="#1d2935" class="connect-again-btn" @click="connectNewAccount">Connect A Different Account</v-btn>
     </div>
 </template>
 

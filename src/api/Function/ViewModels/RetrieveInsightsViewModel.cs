@@ -30,6 +30,7 @@ namespace Function.ViewModels
         public IEnumerable<string> TopTracks { get; set; }
         public IEnumerable<string> TopArtists { get; set; }
         public IEnumerable<string> TopGenres { get; set; }
+        public Dictionary<int, int> TrackCountPerDecade { get; set; }
 
         public InsightsForRangeViewModel(InsightForTimeRange model)
         {
@@ -43,6 +44,7 @@ namespace Function.ViewModels
             TopTracks = model?.TopTracks ?? new List<string>();
             TopGenres = model?.TopGenres ?? new List<string>();
             TopArtists = model?.TopArtists ?? new List<string>();
+            TrackCountPerDecade = model?.TrackDecadeCounts ?? new Dictionary<int, int>();
         }
     }
 }

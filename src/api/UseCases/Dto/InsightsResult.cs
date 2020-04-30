@@ -22,5 +22,6 @@ namespace UseCases.Dto
         public IEnumerable<string> TopTracks { get; set; }
         public IEnumerable<string> TopGenres { get; set; }
         public IEnumerable<string> TopArtists { get; set; }
+        public Dictionary<int, int> TrackDecadeCounts { get; set; }
     }
 }
