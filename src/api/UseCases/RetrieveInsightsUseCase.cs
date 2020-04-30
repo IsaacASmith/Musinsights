@@ -45,6 +45,8 @@ namespace UseCases
                 var artistPopularities = new ArtistPopularities(topArtistsResult.Model);
                 var trackScores = new TrackScores(topTracksResult.Model);
 
+                var decadeCounts = new TrackDecades(topTracksResult.Model);
+
                 var topGenres = new TopGenres(topArtistsResult.Model);
 
                 result.Insights.Add(new InsightForTimeRange
@@ -59,6 +61,7 @@ namespace UseCases
                     TopTracks = topTracksResult.Model.Take(5).Select(e => e.Name),
                     TopArtists = topArtistsResult.Model.Take(5).Select(e => e.Name),
                     TopGenres = topGenres.GetTopGenres(),
+                    TrackDecadeCounts = decadeCounts.DecadeCounts
                 });
             }
 
