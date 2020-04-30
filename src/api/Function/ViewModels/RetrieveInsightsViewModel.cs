@@ -7,7 +7,7 @@ using UseCases.Enums;
 
 namespace Function.ViewModels
 {
-    public class RetrieveInsightsViewModel
+    public class RetrieveInsightsViewModel : BaseViewModel
     {
         public IEnumerable<InsightsForRangeViewModel> Insights { get; set; }
 
