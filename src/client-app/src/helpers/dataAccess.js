@@ -9,7 +9,16 @@ export default class dataAccess {
   }
 
   static async getInsights (userId) {
-    if (localStorage[insightsCacheKey] === undefined || new Date(localStorage[insightsCacheExpiration]) <= new Date()) {
+    if (localStorage[insightsCacheKey] !== undefined && localStorage[insightsCacheExpiration] !== '') {
+      const insights = JSON.parse(localStorage[insightsCacheKey])
+      if (insights.apiVersion !== process.env.VUE_APP_INSIGHTS_API_VERSION) {
+        localStorage[insightsCacheKey] = ''
+      }
+    }
+
+    if (localStorage[insightsCacheKey] === undefined ||
+        localStorage[insightsCacheKey] === '' ||
+        new Date(localStorage[insightsCacheExpiration]) <= new Date()) {
       const expirationDate = new Date().setHours(new Date().getHours() + 48)
       localStorage[insightsCacheExpiration] = expirationDate
 
