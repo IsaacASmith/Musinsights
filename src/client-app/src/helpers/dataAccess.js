@@ -9,7 +9,7 @@ export default class dataAccess {
   }
 
   static async getInsights (userId) {
-    if (localStorage[insightsCacheKey] !== undefined && localStorage[insightsCacheExpiration] !== '') {
+    if (localStorage[insightsCacheKey] !== undefined && localStorage[insightsCacheKey] !== '') {
       const insights = JSON.parse(localStorage[insightsCacheKey])
       if (insights.apiVersion !== process.env.VUE_APP_INSIGHTS_API_VERSION) {
         localStorage[insightsCacheKey] = ''

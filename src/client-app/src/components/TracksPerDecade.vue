@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     onResize() {
-      this.labelSize = window.innerWidth < 1100 ? 8 : 4
+      this.labelSize = window.innerWidth < 1100 ? 6 : 3
     }
   }
 }
