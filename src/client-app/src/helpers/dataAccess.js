@@ -19,7 +19,9 @@ export default class dataAccess {
     if (localStorage[insightsCacheKey] === undefined ||
         localStorage[insightsCacheKey] === '' ||
         new Date(localStorage[insightsCacheExpiration]) <= new Date()) {
-      const expirationDate = new Date().setHours(new Date().getHours() + 48)
+      const expirationDate = new Date()
+      expirationDate.setSeconds(expirationDate.getSeconds() + Number(86400))
+
       localStorage[insightsCacheExpiration] = expirationDate
 
       localStorage[insightsCacheKey] = JSON.stringify(await apiHelper.getInsights(userId))
